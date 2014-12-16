@@ -2,19 +2,18 @@
 
 /**
 *	Plugin Name: Aesop Reveal
-*
+*	Plugin URI: https://github.com/AesopInteractive/aesop-reveal
+*	Description: Based on the TwentyTwenty script, shows a before and after image with draggable handlebars.
+*	Author: Aesopinteractive
+*	Author URI: http://aesopstoryengine.com
+*	Version: 1.0
 */
-
-// check if aesop story engine is active
-if ( class_exists('Aesop_Core') ) {
-	new AesopReveal();
-}
 
 class AesopReveal {
 
 	function __construct(){
 
-		define('AESOP_REVEAL_VERSION', '0.1');
+		define('AESOP_REVEAL_VERSION', '1.0');
 		define('AESOP_REVEAL_DIR', plugin_dir_path( __FILE__ ));
 		define('AESOP_REVEAL_URL', plugins_url( '', __FILE__ ));
 
@@ -113,5 +112,5 @@ class AesopReveal {
 	}
 
 }
-
+new AesopReveal();
 
