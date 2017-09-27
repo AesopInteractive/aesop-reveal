@@ -6,14 +6,14 @@
 *	Description: Based on the TwentyTwenty script, shows a before and after image with draggable handlebars.
 *	Author: Aesopinteractive
 *	Author URI: http://aesopstoryengine.com
-*	Version: 1.0
+*	Version: 1.1
 */
 
 class AesopReveal {
 
 	function __construct(){
 
-		define('AESOP_REVEAL_VERSION', '1.0');
+		define('AESOP_REVEAL_VERSION', '1.1');
 		define('AESOP_REVEAL_DIR', plugin_dir_path( __FILE__ ));
 		define('AESOP_REVEAL_URL', plugins_url( '', __FILE__ ));
 
@@ -27,6 +27,7 @@ class AesopReveal {
 	function shortcode( $atts, $content = null ) {
 
 		$defaults = array(
+		    'width'  => '100%',
 			'before' 	=> '',
 			'after' 	=> '',
 		);
@@ -41,15 +42,15 @@ class AesopReveal {
 		ob_start();
 
 		?>
-		<div class="aesop-component aesop-reveal">
+		<div class="aesop-component aesop-reveal" style="max-width:<?php echo $atts['width'];?>;">
 			<script>
 				jQuery(window).load(function() {
 			  		jQuery('#<?php echo esc_attr( $unique );?>').twentytwenty();
 				});
 			</script>
-			<div id="<?php echo $unique;?>" class="twentytwenty-container aesop-content">
+			<div id="<?php echo $unique;?>" class="twentytwenty-container" style="background-image:url(<?php echo esc_url( $atts['after'] );?>);background-repeat: no-repeat;background-position: center center;background-size: cover;">
 				<img src="<?php echo esc_url( $atts['before'] );?>">
-				<img src="<?php echo esc_url( $atts['after'] );?>">
+				<!--img src="<?php echo esc_url( $atts['after'] );?>"-->
 			</div>
 		</div>
 		<?php
@@ -73,6 +74,12 @@ class AesopReveal {
 				'name' 					=> __('Aesop Reveal', 'aesop-reveal'), // name of the component
 				'type' 					=> 'single', // single - wrap
 				'atts' 					=> array(
+					'width'    => array(
+						'type'  => 'text_small',
+						'default'  => '',
+						'desc'   => __( 'Width', 'aesop-core' ),
+						'tip'  => __( 'Width of the reveal component. Default is 100%. You can enter the size using percentage or pixel units like <code>40%</code> or <code>500px</code>.', 'aesop-reveal' )
+					),
 					'before' 			=> array(
 						'type'			=> 'media_upload', // a small text field
 						'default' 		=> '',
