@@ -6,26 +6,33 @@
 *	Description: Based on the TwentyTwenty script, shows a before and after image with draggable handlebars.
 *	Author: Aesopinteractive
 *	Author URI: http://aesopstoryengine.com
-*	Version: 1.1
+*	Version: 1.2
 */
+
+define('AESOP_REVEAL_URL', plugins_url( '', __FILE__ ));
+define('AESOP_REVEAL_DIR', plugin_dir_path( __FILE__ ));
 
 class AesopReveal {
 
 	function __construct(){
 
-		define('AESOP_REVEAL_VERSION', '1.1');
-		define('AESOP_REVEAL_DIR', plugin_dir_path( __FILE__ ));
-		define('AESOP_REVEAL_URL', plugins_url( '', __FILE__ ));
+		define('AESOP_REVEAL_VERSION', '1.2');
+		
+		
 
 		add_shortcode('aesop_reveal', 			array($this, 'shortcode') );
+		
+		// Gutenberg registration
+		add_action( 'wp', array( $this, 'gutenberg' ), 10 );
+		
 		add_action('aesop_admin_styles', 		array($this, 'icon') );
 		add_filter('aesop_avail_components',	array($this, 'options') );
 
 		add_action('wp_enqueue_scripts', 		array($this,'scripts'));
 	}
 
-	function shortcode( $atts, $content = null ) {
-
+	function shortcode( $atts ) {
+	
 		$defaults = array(
 		    'width'  => '100%',
 			'before' 	=> '',
@@ -117,7 +124,21 @@ class AesopReveal {
 		}
 
 	}
+	
+	function gutenberg()
+	{
+		if (  function_exists( 'register_block_type' ) ) {
+			register_block_type( 'ase/reveal', array(
+					'render_callback' => array($this, 'shortcode')
+			) );
+		}
+	}
 
 }
 new AesopReveal();
+
+/**
+ * BLOCK: Aesop Gutenberg Support.
+ */
+require_once( AESOP_REVEAL_DIR.'block/index.php' );
 

@@ -1,0 +1,16 @@
+/**
+ * ----------------------------------------------------------------------------
+ * #.# Editor CSS
+ *
+ * BLOCK: 01-basic block CSS for the editor.
+ * ----------------------------------------------------------------------------
+ */
+
+.wp-block-aesop-reveal-column {
+	width:50%;
+	float:left;
+}
+
+.wp-block-aesop-reveal-row {
+	display:table;
+}
