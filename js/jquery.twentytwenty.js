@@ -25,6 +25,8 @@
       var overlay = container.find(".twentytwenty-overlay");
       overlay.append("<div class='twentytwenty-before-label'></div>");
       overlay.append("<div class='twentytwenty-after-label'></div>");
+      beforeImg.css("width","100%");
+      
 
       var calcOffset = function(dimensionPct) {
         var w = beforeImg.width();
@@ -38,6 +40,7 @@
       };
 
       var adjustContainer = function(offset) {
+        
       	if (sliderOrientation === 'vertical') {
       	  beforeImg.css("clip", "rect(0,"+offset.w+","+offset.ch+",0)");
       	}

@@ -4,6 +4,8 @@
  * Gutenberg Block for Aesop Image.
  *
  */
+ 
+//require("../../js/jquery.twentytwenty.js");
 ( function() {
 	var __ = wp.i18n.__; // The __() for internationalization.
 	var el = wp.element.createElement; // The wp.element.createElement() function to create elements.
@@ -39,7 +41,6 @@
 		},
 
 		// The "edit" property must be a valid function.
-		//edit: function(props ) {
 			
 		edit	( { attributes, setAttributes, isSelected, className }) {
 			
@@ -76,9 +77,11 @@
 						{
 								title: __( 'Select "Before" Image' ),
 								onSelect: function( media ) {
-											return setAttributes({                       
+											var v =  setAttributes({                       
 												before:media.url
 											});
+                                            //jQuery('.twentytwenty-container').twentytwenty();
+                                            return v;
 								},
 								type: 'image',
 								value: attributes.before,
@@ -98,7 +101,9 @@
 					)
 				),
 				el( 'div',
-					{className: "wp-block-aesop-reveal-column"},
+					{className: "wp-block-aesop-reveal-column"
+                     
+                    },
 					
 					isSelected &&  el(
 						wp.editor.MediaUpload,
@@ -125,7 +130,19 @@
 						{ 
 						src: attributes.after}
 					)
-				)
+				),
+                /*el( 'div',
+					{
+						className: "twentytwenty-container",
+                        style: { backgroundImage: 'url("'+attributes.after+'")' }
+					},
+				
+					attributes.before && el(
+						'img', 
+						{ 
+						src: attributes.before}
+					)
+				)*/
 			);
 			var label = el(
 						'div', 
@@ -147,6 +164,8 @@
 
 			uis.push(label);	
             uis.push(controls);
+            
+            
 			
 			return [ advcontrols,
 				el(
@@ -159,6 +178,7 @@
 							
 
 		},
+		
 
 		// The "save" property must be specified and must be a valid function.
 		save: function( props ) {

@@ -21,6 +21,11 @@ function ase_block_reveal_editor_assets() {
 		array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
 		filemtime( plugin_dir_path( __FILE__ ) . 'reveal/block.js' ) // filemtime — Gets file modification time.
 	);
+    
+    wp_enqueue_style('reveal-style', 		AESOP_REVEAL_URL.'/css/twentytwenty.css', AESOP_REVEAL_VERSION );
+    wp_enqueue_script('reveal-script', 		AESOP_REVEAL_URL.'/js/jquery.event.move.js', array('jquery'), AESOP_REVEAL_VERSION, true);
+	wp_enqueue_script('reveal-script-more', AESOP_REVEAL_URL.'/js/jquery.twentytwenty.js', array('jquery'), AESOP_REVEAL_VERSION, true);
+    
 	
 	// Styles.
 	wp_enqueue_style(

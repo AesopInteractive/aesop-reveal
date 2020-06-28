@@ -6,7 +6,7 @@
 *	Description: Based on the TwentyTwenty script, shows a before and after image with draggable handlebars.
 *	Author: Aesopinteractive
 *	Author URI: http://aesopstoryengine.com
-*	Version: 1.2.1
+*	Version: 1.2.2
 */
 
 define('AESOP_REVEAL_URL', plugins_url( '', __FILE__ ));
@@ -16,7 +16,7 @@ class AesopReveal {
 
 	function __construct(){
 
-		define('AESOP_REVEAL_VERSION', '1.2.1');
+		define('AESOP_REVEAL_VERSION', '1.2.2');
 		
 		
 

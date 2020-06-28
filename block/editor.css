@@ -14,3 +14,9 @@
 .wp-block-aesop-reveal-row {
 	display:table;
 }
+
+.wp-block-aesop-story-engine .twentytwenty-container {
+    width:100%;
+    height:auto;
+    background-size: cover;
+}
