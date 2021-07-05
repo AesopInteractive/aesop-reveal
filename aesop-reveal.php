@@ -55,9 +55,8 @@ class AesopReveal {
 			  		jQuery('#<?php echo esc_attr( $unique );?>').twentytwenty();
 				});
 			</script>
-			<div id="<?php echo $unique;?>" class="twentytwenty-container" style="background-image:url(<?php echo esc_url( $atts['after'] );?>);background-repeat: no-repeat;background-position: center center;background-size: cover;">
-				<img src="<?php echo esc_url( $atts['before'] );?>">
-				<!--img src="<?php echo esc_url( $atts['after'] );?>"-->
+			<div id="<?php echo $unique;?>" class="twentytwenty-container" style="background-image:url(<?php echo esc_url( $atts['before'] );?>);background-repeat: no-repeat;background-position: center center;background-size: cover;">
+				<img src="<?php echo esc_url( $atts['after'] );?>">
 			</div>
 		</div>
 		<?php
